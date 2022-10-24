@@ -41,7 +41,7 @@ def tests_impl(session, extras="socks,secure,brotli"):
         f"--color={'yes' if 'GITHUB_ACTIONS' in os.environ else 'auto'}",
         "--tb=native",
         "--no-success-flaky-report",
-        *(session.posargs or ("test/",)),
+        *(session.posargs or ("test/contrib/test_pyopenssl.py",)),
         env={"PYTHONWARNINGS": "always::DeprecationWarning"},
     )
 
