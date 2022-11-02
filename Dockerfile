@@ -18,16 +18,16 @@ RUN git pull && git checkout py312_ssl_removal
 RUN git fetch python && git rebase python/main
 
 RUN ./configure \
-    --prefix=/opt/python/3.12.0a0 \
+    --prefix=/opt/python/3.12.0a1 \
     --enable-shared \
     --enable-optimizations \
-    LDFLAGS=-Wl,-rpath=/opt/python/3.12.0a0/lib,--disable-new-dtags
+    LDFLAGS=-Wl,-rpath=/opt/python/3.12.0a1/lib,--disable-new-dtags
 
 RUN make && make install
 
-RUN ln -s /opt/python/3.12.0a0/bin/python3.12 /usr/bin/python
-RUN ln -s /opt/python/3.12.0a0/bin/python3.12 /usr/bin/python3.12
-RUN ln -s /opt/python/3.12.0a0/bin/pip3.12 /usr/bin/pip
+RUN ln -s /opt/python/3.12.0a1/bin/python3.12 /usr/bin/python
+RUN ln -s /opt/python/3.12.0a1/bin/python3.12 /usr/bin/python3.12
+RUN ln -s /opt/python/3.12.0a1/bin/pip3.12 /usr/bin/pip
 
 RUN python --version
 
@@ -45,7 +45,7 @@ COPY test_pyopenssl.py ./test/contrib/test_pyopenssl.py
 RUN pip install -U pip setuptools
 RUN pip install nox
 
-RUN ln -s /opt/python/3.12.0a0/bin/nox /usr/bin/nox
+RUN ln -s /opt/python/3.12.0a1/bin/nox /usr/bin/nox
 
 RUN apt-get -y install g++
 
